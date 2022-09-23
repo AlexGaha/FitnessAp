@@ -9,13 +9,19 @@ const getAll = (_, res) => {
 
 //get all in the category
 const getOneCategory = (req, res) => {
-  const { category } = require.params
-  Workout.find({'category' : category})
+  const { categoryName } = req.params
+  console.log(categoryName)
+  Workout.find({category : categoryName})
   .then(workouts => res.status(200).json(workouts))
   .catch(err => res.status(400).json(err));
 };
 
 //get one by id
+const getOne = (req, res) => {
+  Workout.findById({ _id: req.params.id })
+  .then((workout) => res.status(200).json(workout))
+  .catch((err) => res.status(400).json(err));
+};
 
 //create
 const createOne = (req, res) => {
@@ -39,4 +45,4 @@ const deleteOne = (req, res) => {
   .catch((err) => res.status(400).json(err));
 };
 
-module.exports = { getAll, getOneCategory, createOne, updateOne ,deleteOne }
+module.exports = { getAll, getOne, getOneCategory, createOne, updateOne ,deleteOne }
