@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const {  getAll, getOneCategory, createOne, updateOne ,deleteOne, getOne } = require( "../controllers/workout.controller.js");
+const {  getAll, 
+  getOneCategory, 
+  createOne, 
+  updateOne ,
+  deleteOne } = require( "../controller/workout.controller.js");
 
 router.route('/')
   .get(getAll)
